@@ -1,12 +1,12 @@
-print ("Welcome to brand name generator\n")
+import streamlit as st
 
-name2 = input("please enter your city name\n")
-print ("\n")
+st.title("Brand Name Generator")
 
-pet_name = input ('please enter your "pet" name\n')
-print("\n")
+# Get user inputs
+city_name = st.text_input("Please enter your city name")
+pet_name = st.text_input('Please enter your "pet" name')
 
-print ("Your brand name is")
-print("\n")
-
-print ( name2 + " " + pet_name, "!")
+# Show result when both inputs are given
+if city_name and pet_name:
+    st.subheader("Your brand name is:")
+    st.success(f"{city_name} {pet_name}!")
