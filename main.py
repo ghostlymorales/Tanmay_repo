@@ -13,6 +13,6 @@ if amount > 0 and people > 0:
     total = amount + tip_amount
     per_person = total / people
 
-    st.success(f"💵 Each person has to pay: **${per_person:.2f}**")
+    st.success(f"Each person has to pay: **${per_person:.2f}**")
 
 st.write("🙏 THANK YOU :)")
