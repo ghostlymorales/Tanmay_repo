@@ -1,27 +1,18 @@
 import streamlit as st
 
-# Title
 st.title("💰 Tip Calculator")
 
-st.write("Welcome to Tip Calculator! Please enter the details below:")
-
 # Inputs
-a1 = st.number_input("What was the net amount?", min_value=0.0, format="%.2f")
-a2 = st.number_input("How much tip would you like to give? (%)", min_value=0.0, format="%.1f")
-a3 = st.number_input("How many people to split the bill?", min_value=1, step=1)
+amount = st.number_input("What was the net amount?", min_value=0.0, step=0.01)
+tip_percent = st.slider("How much tip would you like to give? (%)", 0, 100, 10)
+people = st.number_input("How many people to split the bill?", min_value=1, step=1, value=1)
 
-# Calculate only if inputs are given
-if a1 > 0:
-    # Tip calculation
-    a2_1 = a2 / 100
-    a2_3 = a2_1 * 100
-    a2_4 = int(a2_3) + int(a1)
+# Calculation
+if amount > 0 and people > 0:
+    tip_amount = (tip_percent / 100) * amount
+    total = amount + tip_amount
+    per_person = total / people
 
-    # Split among people
-    a4 = a2_4 / a3
-    a5 = f"{a4:.3f}"
+    st.success(f"💵 Each person has to pay: **${per_person:.2f}**")
 
-    st.success(f"Each person has to pay: **{a5} $** 💵")
-
-st.write("---")
-st.write("THANK YOU 🙂")
+st.write("🙏 THANK YOU :)")
