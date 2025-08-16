@@ -1,12 +1,27 @@
 import streamlit as st
 
-st.title("Brand Name Generator")
+# Title
+st.title("💰 Tip Calculator")
 
-# Get user inputs
-city_name = st.text_input("Please enter your city name")
-pet_name = st.text_input('Please enter your "pet" name')
+st.write("Welcome to Tip Calculator! Please enter the details below:")
 
-# Show result when both inputs are given
-if city_name and pet_name:
-    st.subheader("Your brand name is:")
-    st.success(f"{city_name} {pet_name}!")
+# Inputs
+a1 = st.number_input("What was the net amount?", min_value=0.0, format="%.2f")
+a2 = st.number_input("How much tip would you like to give? (%)", min_value=0.0, format="%.1f")
+a3 = st.number_input("How many people to split the bill?", min_value=1, step=1)
+
+# Calculate only if inputs are given
+if a1 > 0:
+    # Tip calculation
+    a2_1 = a2 / 100
+    a2_3 = a2_1 * 100
+    a2_4 = int(a2_3) + int(a1)
+
+    # Split among people
+    a4 = a2_4 / a3
+    a5 = f"{a4:.3f}"
+
+    st.success(f"Each person has to pay: **{a5} $** 💵")
+
+st.write("---")
+st.write("THANK YOU 🙂")
